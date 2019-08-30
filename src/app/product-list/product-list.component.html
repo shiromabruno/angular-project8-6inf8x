@@ -1,0 +1,31 @@
+<h2>Products</h2>
+<!-- *ngFor -->
+<!-- []  property bind --> 
+<div *ngFor="let product of products; index as productId">
+<!-- //array que lista cada produto e idexa por produto id -->
+  <h3>
+    <!-- Property binding [ ] -->
+    <!-- router link -->
+    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+   <!-- // toda vez q clicar no produto ele traz o prdouto e prod id 
+      <!-- Interpolation {{ }} -->
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <!-- *ngIf -->
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+
+  <!-- Event binding ( ) -->
+   <button (click)="share()">
+    Share
+  </button>
+
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()">
+  </app-product-alerts>
+
+</div>
